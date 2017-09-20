@@ -8,7 +8,7 @@
 
 #import "GXFBaseViewController.h"
 
-@interface GXFBaseViewController ()
+@interface GXFBaseViewController () <UIGestureRecognizerDelegate>
 
 @end
 
@@ -46,6 +46,8 @@
             }
         }
     }
+    // 拦截手势，禁止首页右滑返回
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
 // 视图将要消失时让手势还原为可用
@@ -58,6 +60,14 @@
             }
         }
     }
+}
+
+#pragma mark - 首页禁止右滑
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.navigationController.viewControllers.count <= 1) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     self.title = @"one";
 }
 
@@ -35,6 +35,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+}
+- (IBAction)jump2:(id)sender {
+    SecondViewController *secondVc = [SecondViewController new];
+    secondVc.supportRightSliderReturn = YES;
+    [self.navigationController pushViewController:secondVc animated:YES];
 }
 
 - (IBAction)jump3:(id)sender {
@@ -56,9 +61,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    SecondViewController *secondVc = [SecondViewController new];
-    secondVc.supportRightSliderReturn = YES;
-    [self.navigationController pushViewController:secondVc animated:YES];
+    
 }
 // 与 - preferredStatusBarStyle方法只能一个生效（info.plist设置 Supported interface orientations为NO，则此方法失效）
 - (UIStatusBarStyle)preferredStatusBarStyle {

@@ -23,6 +23,7 @@
     [btn setTitle:@"返回" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     btn.frame = CGRectMake(50, 50, 50, 40);
+    btn.center = CGPointMake(self.view.center.x, self.view.center.y + 100);
     [self.view addSubview:btn];
     
     UILabel *lbl = [UILabel new];
